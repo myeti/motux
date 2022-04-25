@@ -3,7 +3,6 @@ import { getRandomItem, fetchJSON } from '@/utils'
 const CHARS = 'abcdefghijklmnopqrstuvwxyz'.split('')
 const API_URL = 'https://api.datamuse.com/words'
 const LIMIT = 1000
-const MIN_SCORE = 200
 const MIN_FREQ = 1.2
 
 export async function getWords(key, chars = 5, n = 1) {
@@ -18,7 +17,6 @@ export async function getWords(key, chars = 5, n = 1) {
         }).map(r => r.word)
         words.push(getRandomItem(key, i, list))
     }
-    console.log(words)
     return words
 }
 

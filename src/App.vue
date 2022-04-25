@@ -18,7 +18,7 @@ export default {
     methods: {
         checkWord,
         onComplete(success, results) {
-            setTimeout(() => alert(success ? 'Success !' : 'Failure...'), 25)
+            setTimeout(() => alert(success ? 'Success !' : 'You failed...'), 25)
         }
     },
     async created() {

@@ -20,7 +20,7 @@ export function getRandomItem(key, n, items) {
 }
 
 export function normalize(str) {
-    return str.toLowerCase() // todo: translate accents and special chars
+    return str.toLowerCase() // @todo: sanitize accents and special chars
 }
 
 export function compare(word, input) {
