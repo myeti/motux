@@ -1,26 +1,43 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>MOTUX</h1>
+    <Motux :words="words" :lines="10" :validator="checkWord" @complete="onComplete" />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Motux from './components/Motux'
+import { getTodayKey } from '@/utils'
+import { getWords, checkWord } from '@/utils/api/datamuse'
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+    components: {
+        Motux
+    },
+    data: () => ({
+        words: []
+    }),
+    methods: {
+        checkWord,
+        onComplete(success, results) {
+            setTimeout(() => alert(success ? 'Success !' : 'Failure...'), 25)
+        }
+    },
+    async created() {
+        const key = getTodayKey()
+        this.words = await getWords(key, 5, 6)
+    }
 }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+body {
+    font-family: Avenir, Helvetica, sans-serif;
+    font-size: 20px;
+    color: #444;
+}
+
+h1 {
+    margin-top: 100px;
+    margin-bottom: 60px;
+    text-align: center;
 }
 </style>

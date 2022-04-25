@@ -1,4 +1,4 @@
-# motus
+# motux
 
 ## Project setup
 ```
